@@ -130,7 +130,24 @@ export default function App() {
         onNavigate={handleNavigate}
       />
 
-      <main className="flex-1">
+      <main
+        className={`flex-1 ${view === 'detail' ? 'cursor-pointer' : ''}`}
+        onClick={(e) => {
+          if (view !== 'detail') return;
+          const selectedText = window.getSelection()?.toString();
+          if (selectedText && selectedText.length > 0) return;
+          const target = e.target as HTMLElement | null;
+          if (!target) return;
+          if (
+            target.closest(
+              'button, a, input, select, textarea, iframe, article, [data-detail-content]'
+            )
+          ) {
+            return;
+          }
+          handleNavigate('home');
+        }}
+      >
         {view === 'home' && (
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             {/* Masthead Strip */}
@@ -276,7 +293,10 @@ export default function App() {
         )}
 
         {view === 'detail' && !detailVideo && (
-          <div className="mx-auto max-w-2xl px-4 py-16 text-center">
+          <div
+            data-detail-content
+            className="mx-auto max-w-2xl cursor-auto px-4 py-16 text-center"
+          >
             <h1 className="font-display text-2xl font-bold text-zinc-50">
               Video entry not found
             </h1>

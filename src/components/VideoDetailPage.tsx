@@ -55,7 +55,8 @@ export function VideoDetailPage({
         {/* Section A: Original Video */}
         <section
           aria-labelledby="section-original-video"
-          className="space-y-4 lg:col-span-7 lg:col-start-1 lg:row-start-1"
+          data-detail-content
+          className="cursor-auto space-y-4 lg:col-span-7 lg:col-start-1 lg:row-start-1"
         >
           <div className="flex items-center justify-between gap-2">
             <h2
@@ -93,7 +94,8 @@ export function VideoDetailPage({
         {/* Section B: Archival Context */}
         <section
           aria-labelledby="section-story-behind"
-          className="rounded-2xl border border-zinc-950/30 bg-[#DEC03B] p-5 sm:p-6 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1"
+          data-detail-content
+          className="cursor-auto rounded-2xl border border-zinc-950/30 bg-[#DEC03B] p-5 sm:p-6 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1"
         >
           <p className="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-900">
             B. Archival Context
@@ -169,7 +171,8 @@ export function VideoDetailPage({
         {/* Section C: Video Information */}
         <section
           aria-labelledby="section-video-info"
-          className="rounded-2xl border border-zinc-800 bg-zinc-900 p-5 sm:p-6 lg:col-span-7 lg:col-start-1 lg:row-start-2"
+          data-detail-content
+          className="cursor-auto rounded-2xl border border-zinc-800 bg-zinc-900 p-5 sm:p-6 lg:col-span-7 lg:col-start-1 lg:row-start-2"
         >
           <p
             id="section-video-info"
@@ -223,7 +226,10 @@ export function VideoDetailPage({
 
       {/* Section D: Related videos */}
       <section aria-labelledby="section-related-videos" className="space-y-4">
-        <div className="flex items-baseline justify-between gap-4">
+        <div
+          data-detail-content
+          className="inline-flex cursor-auto items-baseline justify-between gap-4"
+        >
           <div>
             <p className="font-mono text-xs font-semibold uppercase tracking-wider text-zinc-400">
               D. Related Videos
@@ -240,17 +246,21 @@ export function VideoDetailPage({
         {relatedVideos.length > 0 ? (
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {relatedVideos.map((rel) => (
-              <VideoCard
-                key={rel.id}
-                video={rel}
-                isBookmarked={bookmarkedIds.includes(rel.id)}
-                onOpenDetail={onOpenDetail}
-                onToggleBookmark={onToggleBookmark}
-              />
+              <div key={rel.id} className="cursor-auto">
+                <VideoCard
+                  video={rel}
+                  isBookmarked={bookmarkedIds.includes(rel.id)}
+                  onOpenDetail={onOpenDetail}
+                  onToggleBookmark={onToggleBookmark}
+                />
+              </div>
             ))}
           </div>
         ) : (
-          <p className="rounded-xl border border-zinc-800 bg-zinc-900 p-6 text-sm text-zinc-400">
+          <p
+            data-detail-content
+            className="cursor-auto rounded-xl border border-zinc-800 bg-zinc-900 p-6 text-sm text-zinc-400"
+          >
             No related entries found yet.
           </p>
         )}

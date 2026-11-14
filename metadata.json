@@ -1,0 +1,6 @@
+{
+  "name": "VIRAL ARCHIVE",
+  "description": "An internet-culture archive and discovery platform for original viral videos, focusing on Malaysia first, with verified background stories and original source links.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

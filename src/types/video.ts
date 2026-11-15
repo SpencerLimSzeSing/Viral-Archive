@@ -42,7 +42,6 @@ export interface ViralVideo {
   tags: string[];
   background_story: string;
   what_happened: string;
-  why_viral: string;
   additional_context: string;
 }
 

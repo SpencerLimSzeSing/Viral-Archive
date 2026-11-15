@@ -21,7 +21,6 @@ export interface SupabaseVideoRow {
   tags?: string[] | string | null;
   what_happened: string;
   background_story: string;
-  why_viral: string;
   additional_context?: string | null;
   is_published?: boolean | null;
 }
@@ -97,7 +96,6 @@ export function mapSupabaseRowToViralVideo(row: SupabaseVideoRow): ViralVideo {
     tags,
     background_story: row.background_story,
     what_happened: row.what_happened,
-    why_viral: row.why_viral,
     additional_context: row.additional_context?.trim() || '',
   };
 }

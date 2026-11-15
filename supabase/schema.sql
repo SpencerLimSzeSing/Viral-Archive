@@ -10,7 +10,7 @@ create table if not exists viral_videos (
   embed_url text,
   thumbnail_url text not null default '',
 
-  -- B. Video Information
+  -- C. Video Information
   title text not null,
   description text not null default '',
   uploader text not null,
@@ -19,10 +19,9 @@ create table if not exists viral_videos (
   categories text[] not null default '{}',
   tags text[] not null default '{}',
 
-  -- C. Archival Context ("Why you should laugh?")
+  -- B. Archival Context ("Why you should laugh?")
   what_happened text not null,      -- The story behind the video: brief explanation of the incident
   background_story text not null,   -- What led to this moment?
-  why_viral text not null,          -- Why it's funny: unexpected reaction or situation
   additional_context text not null default '', -- Other angles, original footage, or follow-ups
 
   -- Curation control (only published rows are visible to public visitors)

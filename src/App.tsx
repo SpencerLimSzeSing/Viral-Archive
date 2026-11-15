@@ -160,8 +160,8 @@ export default function App() {
                   History is written by the victors, but memes must be preserved by the internet.
                 </p>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm text-zinc-400">
-                  An internet-culture archive spotlighting Malaysia and global viral moments with
-                  original platform sources and verified context.
+                  Archiving real, hilarious viral moments from Malaysia and around the world—with
+                  the verified context and story behind them.
                 </p>
               </div>
             </div>

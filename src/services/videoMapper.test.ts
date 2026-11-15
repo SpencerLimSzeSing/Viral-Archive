@@ -18,7 +18,6 @@ test('mapSupabaseRowToViralVideo maps standard PostgreSQL row fields cleanly', (
     tags: ['kuala lumpur', 'kitten', 'commute'],
     what_happened: 'A motorcyclist paused traffic briefly to scoop a kitten onto the sidewalk.',
     background_story: 'Heavy evening traffic near Masjid Jamek after rain.',
-    why_viral: 'Drivers immediately waited and gave a thumbs-up.',
     additional_context: 'Follow-up post showed the kitten adopted by a nearby cafe.',
     is_published: true,
   });
@@ -44,7 +43,6 @@ test('mapSupabaseRowToViralVideo parses comma-separated strings and falls back s
     tags: '{malaysia,viral}',
     what_happened: 'Unexpected crowd reaction.',
     background_story: 'Afternoon street event.',
-    why_viral: 'Perfect comic timing.',
   });
 
   assert.equal(mapped.platform, 'TikTok');
@@ -64,7 +62,6 @@ test('mapSupabaseRowToViralVideo detects YouTube from URL and normalizes raw wat
     uploader: 'Xaptus_4',
     what_happened: 'Sample clip.',
     background_story: 'Sample story.',
-    why_viral: 'Sample viral reason.',
   });
 
   assert.equal(mapped.platform, 'YouTube');

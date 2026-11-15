@@ -124,23 +124,6 @@ export function VideoDetailPage({
 
             <div>
               <h3 className="font-display text-base font-bold text-zinc-950">
-                Why it&apos;s funny
-              </h3>
-              <p className="mt-1">{video.why_viral}</p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-base font-bold text-zinc-950">
-                Original source
-              </h3>
-              <p className="mt-1">
-                <span className="font-semibold">{video.uploader}</span> on{' '}
-                <span className="font-semibold">{video.platform}</span>
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-display text-base font-bold text-zinc-950">
                 Additional context
               </h3>
               <p className="mt-1">
@@ -149,21 +132,29 @@ export function VideoDetailPage({
               </p>
             </div>
 
-            <div className="border-t border-zinc-950/15 pt-4">
+            <div>
               <h3 className="font-display text-base font-bold text-zinc-950">
-                Original source link
+                Video source
               </h3>
-              <div className="mt-2.5 flex flex-wrap items-center gap-3">
-                <a
-                  href={video.original_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-950 bg-[#FACC15] px-3.5 py-2 text-xs font-semibold text-zinc-950 hover:bg-[#EAB308]"
-                >
-                  <span>Visit Original Post</span>
-                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </div>
+              <p className="mt-1">
+                <span className="font-semibold">{video.uploader}</span> on{' '}
+                <span className="font-semibold">{video.platform}</span>
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-950/15 pt-4">
+              <h3 className="font-display text-base font-bold text-zinc-950">
+                Check out the video post
+              </h3>
+              <a
+                href={video.original_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-950 bg-[#FACC15] px-3.5 py-2 text-xs font-semibold text-zinc-950 hover:bg-[#EAB308] whitespace-nowrap shrink-0"
+              >
+                <span>Video Link</span>
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </section>
@@ -203,7 +194,7 @@ export function VideoDetailPage({
               <dd className="text-right font-semibold text-zinc-100">{video.country}</dd>
             </div>
             <div className="flex items-baseline justify-between gap-4 py-2.5">
-              <dt className="font-medium text-zinc-400">Added to archive</dt>
+              <dt className="font-medium text-zinc-400">When did the event happen?</dt>
               <dd className="text-right font-mono text-zinc-100 tabular-nums">
                 {formatArchiveDate(video.date_added)}
               </dd>

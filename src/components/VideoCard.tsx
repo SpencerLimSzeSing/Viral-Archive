@@ -69,7 +69,7 @@ export function VideoCard({
           </h3>
 
           <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-zinc-200">
-            {video.what_happened || video.description}
+            {video.description || video.what_happened}
           </p>
 
           {video.categories.length > 0 && (

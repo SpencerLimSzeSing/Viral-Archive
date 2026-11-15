@@ -121,24 +121,19 @@ export function FeaturedPanel({
             <dd className="mt-0.5 text-zinc-900">{video.background_story}</dd>
           </div>
 
-          <div>
-            <dt className="font-semibold text-zinc-950">Why it&apos;s funny:</dt>
-            <dd className="mt-0.5 text-zinc-900">{video.why_viral}</dd>
-          </div>
-
-          <div>
-            <dt className="font-semibold text-zinc-950">Original source:</dt>
-            <dd className="mt-0.5 text-zinc-900">
-              {video.uploader} on {video.platform}
-            </dd>
-          </div>
-
           {video.additional_context && (
             <div>
               <dt className="font-semibold text-zinc-950">Additional context:</dt>
               <dd className="mt-0.5 text-zinc-900">{video.additional_context}</dd>
             </div>
           )}
+
+          <div>
+            <dt className="font-semibold text-zinc-950">Video source:</dt>
+            <dd className="mt-0.5 text-zinc-900">
+              {video.uploader} on {video.platform}
+            </dd>
+          </div>
 
           {relatedVideos.length > 0 && (
             <div className="pt-1">

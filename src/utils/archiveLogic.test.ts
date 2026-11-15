@@ -24,7 +24,6 @@ const MOCK_VIDEOS: ViralVideo[] = [
     tags: ['oyen', 'mamak', 'cat'],
     background_story: 'Recorded in Bangsar.',
     what_happened: 'Cat climbed onto chair.',
-    why_viral: 'Polite posture.',
     additional_context: 'Regular neighborhood cat.',
   },
   {
@@ -42,7 +41,6 @@ const MOCK_VIDEOS: ViralVideo[] = [
     tags: ['monsoon', 'kayak', 'shah-alam'],
     background_story: 'Heavy evening downpour.',
     what_happened: 'Neighbor paddled to corner store.',
-    why_viral: 'Calm attitude during rain.',
     additional_context: 'Water receded by midnight.',
   },
   {
@@ -60,7 +58,6 @@ const MOCK_VIDEOS: ViralVideo[] = [
     tags: ['otters', 'wildlife', 'traffic'],
     background_story: 'Morning commute.',
     what_happened: 'Drivers stopped for otters.',
-    why_viral: 'Single-file crossing.',
     additional_context: 'NParks confirmed safe crossing.',
   },
 ];

@@ -134,7 +134,6 @@ export function filterVideos(videos: ViralVideo[], filters: FilterState): ViralV
         video.description,
         video.background_story,
         video.what_happened,
-        video.why_viral,
         video.additional_context,
         video.uploader,
         video.country,

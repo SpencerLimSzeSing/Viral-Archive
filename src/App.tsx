@@ -131,12 +131,15 @@ export default function App() {
       />
 
       <main
-        className={`flex-1 ${view === 'detail' ? 'cursor-pointer' : ''}`}
+        className={`flex-1 ${view === 'detail' ? 'lg:cursor-pointer' : ''}`}
         onClick={(e) => {
           if (view !== 'detail') return;
           const selectedText = window.getSelection()?.toString();
           if (selectedText && selectedText.length > 0) return;
-          const target = e.target as HTMLElement | null;
+          const target =
+            e.target instanceof Element
+              ? e.target
+              : (e.target as Node | null)?.parentElement ?? null;
           if (!target) return;
           if (
             target.closest(
@@ -199,21 +202,21 @@ export default function App() {
                   <div
                     aria-busy="true"
                     aria-label="Updating video results"
-                    className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                    className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3"
                   >
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <div
                         key={n}
-                        className="h-72 animate-pulse rounded-xl border border-zinc-600 bg-zinc-700/90 p-4"
+                        className="h-56 animate-pulse rounded-xl border border-zinc-600 bg-zinc-700/90 p-2.5 sm:h-72 sm:p-4"
                       >
                         <div className="aspect-[4/3] w-full rounded-lg bg-zinc-800" />
-                        <div className="mt-3 h-4 w-3/4 rounded bg-zinc-600" />
-                        <div className="mt-2 h-3 w-1/2 rounded bg-zinc-600/70" />
+                        <div className="mt-2.5 h-3.5 w-3/4 rounded bg-zinc-600 sm:mt-3 sm:h-4" />
+                        <div className="mt-1.5 h-3 w-1/2 rounded bg-zinc-600/70 sm:mt-2" />
                       </div>
                     ))}
                   </div>
                 ) : filteredAndSorted.length > 0 ? (
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
                     {filteredAndSorted.map((video) => (
                       <VideoCard
                         key={video.id}

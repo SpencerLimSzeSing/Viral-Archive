@@ -66,8 +66,9 @@ function normalizeDate(value: string | null | undefined, fallback: string): stri
 }
 
 export function mapSupabaseRowToViralVideo(row: SupabaseVideoRow): ViralVideo {
+  const cleanOriginalUrl = row.original_url.trim();
   const detectedPlatform =
-    detectPlatformFromUrl(row.original_url) ?? detectPlatformFromUrl(row.embed_url ?? '');
+    detectPlatformFromUrl(cleanOriginalUrl) ?? detectPlatformFromUrl(row.embed_url ?? '');
   const platform: VideoPlatform =
     detectedPlatform ??
     (VALID_PLATFORMS.has(row.platform) ? (row.platform as VideoPlatform) : 'TikTok');
@@ -79,17 +80,17 @@ export function mapSupabaseRowToViralVideo(row: SupabaseVideoRow): ViralVideo {
   const tags = normalizeStringArray(row.tags);
   const dateAdded = normalizeDate(row.date_added, '2026-01-01');
 
-  const embedUrl = normalizeEmbedUrl(platform, row.original_url, row.embed_url);
+  const embedUrl = normalizeEmbedUrl(platform, cleanOriginalUrl, row.embed_url);
 
   return {
-    id: row.id,
-    title: row.title,
+    id: row.id.trim(),
+    title: row.title.trim(),
     description: row.description?.trim() || row.what_happened,
     platform,
-    original_url: row.original_url,
+    original_url: cleanOriginalUrl,
     embed_url: embedUrl,
     thumbnail_url: row.thumbnail_url?.trim() || '',
-    uploader: row.uploader,
+    uploader: row.uploader.trim(),
     country: row.country?.trim() || 'Malaysia',
     date_added: dateAdded,
     categories,

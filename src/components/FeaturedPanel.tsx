@@ -7,6 +7,7 @@ interface FeaturedPanelProps {
   video: ViralVideo;
   relatedVideos: ViralVideo[];
   isBookmarked: boolean;
+  showStoryContext?: boolean;
   onOpenDetail: (video: ViralVideo) => void;
   onToggleBookmark: (videoId: string) => void;
   onSelectSpotlight: (video: ViralVideo) => void;
@@ -17,6 +18,7 @@ export function FeaturedPanel({
   video,
   relatedVideos,
   isBookmarked,
+  showStoryContext = false,
   onOpenDetail,
   onToggleBookmark,
   onSelectSpotlight,
@@ -24,7 +26,7 @@ export function FeaturedPanel({
 }: FeaturedPanelProps) {
   return (
     <aside
-      aria-label="Featured video spotlight and viral context"
+      aria-label="Featured video spotlight"
       className="space-y-3.5"
     >
       {/* Random Video trigger directly on top of Featured Spotlight */}
@@ -102,58 +104,60 @@ export function FeaturedPanel({
         </div>
       </div>
 
-      {/* Yellow Story Context Card (Wireframe far-right yellow block) */}
-      <div className="rounded-2xl border border-zinc-950/30 bg-[#D4B42C] p-4 sm:p-5">
-        <div className="flex items-center justify-between gap-2 border-b border-zinc-950/15 pb-2.5">
-          <h3 className="font-display text-base font-bold text-zinc-950">
-            Why you should laugh?
-          </h3>
-        </div>
-
-        <dl className="mt-3 space-y-2.5 text-xs leading-relaxed text-zinc-900">
-          <div>
-            <dt className="font-semibold text-zinc-950">The story behind the video:</dt>
-            <dd className="mt-0.5 text-zinc-900">{video.what_happened}</dd>
+      {/* Yellow Story Context Card (hidden on main page) */}
+      {showStoryContext && (
+        <div className="rounded-2xl border border-zinc-950/30 bg-[#D4B42C] p-4 sm:p-5">
+          <div className="flex items-center justify-between gap-2 border-b border-zinc-950/15 pb-2.5">
+            <h3 className="font-display text-base font-bold text-zinc-950">
+              Why you should laugh?
+            </h3>
           </div>
 
-          <div>
-            <dt className="font-semibold text-zinc-950">What led to this moment?</dt>
-            <dd className="mt-0.5 text-zinc-900">{video.background_story}</dd>
-          </div>
-
-          {video.additional_context && (
+          <dl className="mt-3 space-y-2.5 text-xs leading-relaxed text-zinc-900">
             <div>
-              <dt className="font-semibold text-zinc-950">Additional context:</dt>
-              <dd className="mt-0.5 text-zinc-900">{video.additional_context}</dd>
+              <dt className="font-semibold text-zinc-950">The story behind the video:</dt>
+              <dd className="mt-0.5 text-zinc-900">{video.what_happened}</dd>
             </div>
-          )}
 
-          <div>
-            <dt className="font-semibold text-zinc-950">Video source:</dt>
-            <dd className="mt-0.5 text-zinc-900">
-              {video.uploader} on {video.platform}
-            </dd>
-          </div>
+            <div>
+              <dt className="font-semibold text-zinc-950">What led to this moment?</dt>
+              <dd className="mt-0.5 text-zinc-900">{video.background_story}</dd>
+            </div>
 
-          {relatedVideos.length > 0 && (
-            <div className="pt-1">
-              <dt className="font-semibold text-zinc-950">Other angles &amp; follow-ups:</dt>
-              <dd className="mt-1.5 space-y-1">
-                {relatedVideos.map((rel) => (
-                  <button
-                    key={rel.id}
-                    type="button"
-                    onClick={() => onSelectSpotlight(rel)}
-                    className="block w-full truncate rounded-md px-2 py-1 text-left text-xs font-medium text-zinc-950 underline decoration-zinc-900/50 underline-offset-2 hover:bg-zinc-950/15"
-                  >
-                    {rel.title}
-                  </button>
-                ))}
+            {video.additional_context && (
+              <div>
+                <dt className="font-semibold text-zinc-950">Additional context:</dt>
+                <dd className="mt-0.5 text-zinc-900">{video.additional_context}</dd>
+              </div>
+            )}
+
+            <div>
+              <dt className="font-semibold text-zinc-950">Video source:</dt>
+              <dd className="mt-0.5 text-zinc-900">
+                {video.uploader} on {video.platform}
               </dd>
             </div>
-          )}
-        </dl>
-      </div>
+
+            {relatedVideos.length > 0 && (
+              <div className="pt-1">
+                <dt className="font-semibold text-zinc-950">Other angles &amp; follow-ups:</dt>
+                <dd className="mt-1.5 space-y-1">
+                  {relatedVideos.map((rel) => (
+                    <button
+                      key={rel.id}
+                      type="button"
+                      onClick={() => onSelectSpotlight(rel)}
+                      className="block w-full truncate rounded-md px-2 py-1 text-left text-xs font-medium text-zinc-950 underline decoration-zinc-900/50 underline-offset-2 hover:bg-zinc-950/15"
+                    >
+                      {rel.title}
+                    </button>
+                  ))}
+                </dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      )}
     </aside>
   );
 }
